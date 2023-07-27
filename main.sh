@@ -51,13 +51,13 @@ fi
 
 result=0
 for FILE in $FILES; do
-    if [[ $FILE =~ \.sql$ ]]; then
+    # if [[ $FILE =~ \.sql$ ]]; then
         echo "Start check statement in file $FILE"
         $GITHUB_ACTION_PATH/sql-review.sh --file=$FILE --database-type=$DATABASE_TYPE --override="$override" --template-id="$TEMPLATE_ID" --api=$API_URL
         if [ $? != 0 ]; then
             result=1
         fi
-    fi
+    # fi
 done
 
 exit $result
