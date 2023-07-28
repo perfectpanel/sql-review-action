@@ -18,6 +18,7 @@ jobs:
         run: |
           verion=`cat VERSION`
           echo "::set-output name=version::$verion"
+          run: echo "name=$verion" >> $GITHUB_OUTPUT
       - name: Create Tag
         uses: negz/create-tag@v1
         with:
