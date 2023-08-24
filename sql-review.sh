@@ -106,11 +106,10 @@ Doc: $DOC_URL#$code"
         content="${content//$'\n'/'%0A'}"
         error_msg="file=$FILE,line=$line,col=1,endColumn=2,title=$title::$content"
 
-        if [ $status == 'WARN' ]; then
-#            echo "::warning $error_msg" commented to prevent WARNINGs
-        else
-            result=$code
-            echo "::error $error_msg"
+
+        if [ $status != 'WARN' ]; then
+              result=$code
+              echo "::error $error_msg"
         fi
     fi
 done <<< "$(echo $body | jq -r '.[]' | jq '.code')"
