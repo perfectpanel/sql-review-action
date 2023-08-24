@@ -107,7 +107,7 @@ Doc: $DOC_URL#$code"
         error_msg="file=$FILE,line=$line,col=1,endColumn=2,title=$title::$content"
 
         if [ $status == 'WARN' ]; then
-            echo "::warning $error_msg"
+#            echo "::warning $error_msg" commented to prevent WARNINGs
         else
             result=$code
             echo "::error $error_msg"
