@@ -107,7 +107,7 @@ Doc: $DOC_URL#$code"
         error_msg="file=$FILE,line=$line,col=1,endColumn=2,title=$title::$content"
 
 
-        if [ $status != 'WARN' ] && [ $code == 408 ]; then # on ERROR status and COLUMN.COMMENT required only
+        if [ $code == 201 ] || [ $code == 408 ] && [ $status != 'WARN' ]; then # on ERROR status and COLUMN.COMMENT required only and PARSING ERROR code
               result=$code
               echo "::error $error_msg"
         fi
