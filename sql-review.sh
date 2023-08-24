@@ -107,7 +107,7 @@ Doc: $DOC_URL#$code"
         error_msg="file=$FILE,line=$line,col=1,endColumn=2,title=$title::$content"
 
 
-        if [ $status != 'WARN' ] && [ $http_code == 408 ]; then # on ERROR status and
+        if [ $status != 'WARN' ] && [ $code == 408 ]; then # on ERROR status and
               result=$code
               echo "::error $error_msg"
         fi
