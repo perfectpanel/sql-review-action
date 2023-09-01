@@ -106,11 +106,8 @@ Doc: $DOC_URL#$code"
         content="${content//$'\n'/'%0A'}"
         error_msg="file=$FILE,line=$line,col=1,endColumn=2,title=$title::$content"
 
-
-        if [ $code == 201 ] # ERROR status
-        || [ $code == 408 ] # COLUMN.COMMENT required
-        || [ $code == 1201 ] # charset COLLATION allow list
-        && [ $status != 'WARN' ]; then
+        # ERROR status || COLUMN.COMMENT required || charset COLLATION allow list && status ERROR
+        if [ $code == 201 ] || [ $code == 408 ] || [ $code == 1201 ] && [ $status != 'WARN' ]; then
               result=$code
               echo "::error $error_msg"
         fi
