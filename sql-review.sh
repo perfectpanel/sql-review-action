@@ -107,7 +107,10 @@ Doc: $DOC_URL#$code"
         error_msg="file=$FILE,line=$line,col=1,endColumn=2,title=$title::$content"
 
 
-        if [ $code == 201 ] || [ $code == 408 ] && [ $status != 'WARN' ]; then # on ERROR status and COLUMN.COMMENT required only and PARSING ERROR code
+        if [ $code == 201 ] # ERROR status
+        || [ $code == 408 ] # COLUMN.COMMENT required
+        || [ $code == 1201 ] # charset COLLATION allow list
+        && [ $status != 'WARN' ]; then
               result=$code
               echo "::error $error_msg"
         fi
